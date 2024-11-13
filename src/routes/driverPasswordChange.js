@@ -1,6 +1,6 @@
 const express = require('express');
 const pool = require('../../db'); // Import the database connection
-const bcrypt = require('bcrypt'); // Import bcrypt for password hashing
+const bcrypt = require('bcryptjs'); // Import bcrypt for password hashing
 const router = express.Router();
 
 // Route to update the password of a driver

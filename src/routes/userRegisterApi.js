@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const pool = require('../../db'); // Import the database connection
 const router = express.Router();
 

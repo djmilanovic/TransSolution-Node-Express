@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../../db'); // Database connection
 const router = express.Router();
-const bcrypt = require('bcrypt'); // For password hashing
+const bcrypt = require('bcryptjs'); // For password hashing
 const jwt = require('jsonwebtoken'); // For creating JWT
 
 // Define a secret key for JWT (should be in environment variables in production)
