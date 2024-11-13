@@ -13,6 +13,7 @@ const getOrdersApi = require('./src/routes/getOrdersApi');
 const getClients = require('./src/routes/getClients.js');
 const getAllClientData = require('./src/routes/getAllClientDataById.js');
 const driverPasswordChange =  require('./src/routes/driverPasswordChange.js');
+const updateClients = require('./src/routes/updateClients.js');
 
 // Import the scheduled job
 require('./loyaltyBonusJob.js'); // This will start the cron job
@@ -37,6 +38,8 @@ server.use('/api/allClients', getClients);
 server.use('/api/allClientDataById', getAllClientData);
 //Get all client data by ID API
 server.use('/api/driverPasswordChange', driverPasswordChange);
+//Update clients API
+server.use('/api/updateClients', updateClients);
 
 // Server listen
 const PORT = process.env.PORT || 5000;
