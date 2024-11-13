@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
                    orders.discount_used,   -- Include the discount_used column
                    orders.discount_price,  -- Include the discount_price column
                    clients.name AS clientName,
-                   users.name AS userName
+                   users.name AS userName,
+                   users.surname AS userSurname  -- Include the user surname
             FROM orders
             JOIN clients ON orders.client_id = clients.id
             JOIN users ON orders.user_id = users.id
@@ -47,7 +48,13 @@ router.get('/', async (req, res) => {
 
         const result = await pool.query(sql, params);
 
-        res.json({ orders: result.rows });
+        // Map the result to include fullName as a concatenation of userName and userSurname
+        const orders = result.rows.map(row => ({
+            ...row,
+            userFullName: `${row.userName} ${row.userSurname}`
+        }));
+
+        res.json({ orders });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error fetching orders' });
